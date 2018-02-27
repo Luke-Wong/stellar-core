@@ -47,6 +47,7 @@ class XDRInputFileStream
             msg += ", reason: ";
             msg += std::to_string(errno);
             CLOG(ERROR, "Fs") << msg;
+            printf("error is: %s\n", msg.c_str());
             throw std::runtime_error(msg);
         }
     }
@@ -118,6 +119,7 @@ class XDROutputFileStream
             msg += ", reason: ";
             msg += std::to_string(errno);
             CLOG(FATAL, "Fs") << msg;
+            printf("error is: %s\n", msg.c_str());
             throw std::runtime_error(msg);
         }
     }
