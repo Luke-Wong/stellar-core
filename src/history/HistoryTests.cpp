@@ -563,6 +563,7 @@ TEST_CASE("Catchup recent", "[history][catchuprecent]")
  */
 TEST_CASE("Catchup manual", "[history][catchupmanual]")
 {
+    Logging::setLogLevel(el::Level::Warning, nullptr);
     CatchupSimulation catchupSimulation{};
 
     auto dbMode = Config::TESTDB_IN_MEMORY_SQLITE;
@@ -600,6 +601,8 @@ TEST_CASE("Catchup manual", "[history][catchupmanual]")
     {
         catchupSimulation.catchupApplication(initLedger, 80, false, a);
     }
+
+    Logging::setLogLevel(el::Level::Fatal, nullptr);
 }
 
 // Check that initializing a history store that already exists, fails.
